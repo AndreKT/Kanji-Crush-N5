@@ -616,6 +616,25 @@ body:not(.menu) .mv b{color:#ff2e88!important;font-size:var(--mvf,30px)!importan
 #bolts .vmain,#bolts .vcore,#bolts .vthin{stroke-linecap:round;stroke-linejoin:round}
 .ptsbig{position:absolute;left:50%;top:50%;z-index:70;pointer-events:none;font-family:"Fredoka",system-ui,sans-serif;font-weight:900;font-size:64px;line-height:1;white-space:nowrap;transform:translate(-50%,-50%);text-shadow:0 4px 0 #0f1428,0 -2px 0 #0f1428,2px 0 0 #0f1428,-2px 0 0 #0f1428;animation:ptsJump 1s ease-out forwards}
 @keyframes ptsJump{0%{transform:translate(-50%,-50%) scale(.2);opacity:0}15%{transform:translate(-50%,-70%) scale(1.15);opacity:1}25%{transform:translate(-50%,-50%) scale(1)}30%{transform:translate(-50%,-56%) scale(1)}35%,85%{transform:translate(-50%,-50%) scale(1);opacity:1}100%{transform:translate(-50%,-60%) scale(.9);opacity:0}}
+
+/* misturar na cor do objetivo; aviso em madeira; contador verde e vermelho-rosa nas últimas 5 */
+body:not(.menu) #bx{background:var(--gc,#7b4fd0)!important;box-shadow:0 6px 0 rgba(0,0,0,.35)!important;color:var(--gt,#f3dcff)!important}
+body:not(.menu) #bx b{color:var(--gt,#f3dcff)!important}
+#ov:not(.loss)>div{background:linear-gradient(180deg,#b07a4a,#8a5a2e)!important;border-color:#6b4424!important;box-shadow:0 6px 0 #3e2a14!important}
+#ov:not(.loss) #ovt,#ov:not(.loss) #ovd{color:#fff7e6!important;text-shadow:0 2px 0 #3e2a14!important}
+body:not(.menu) .mv b{color:#2ee83a!important}
+body:not(.menu) #mv.low{color:#ff2e6e!important}
+
+/* botão Jogar do mapa em madeira; próxima fase em marrom mais escuro (Game over continua rosa); cartão de combinação em marrom */
+#mplay{background:linear-gradient(180deg,#b07a4a,#8a5a2e)!important;box-shadow:0 5px 0 #3e2a14!important;border:3px solid #6b4424!important;color:#fff7e6!important;text-shadow:0 2px 0 #3e2a14!important}
+#ov:not(.loss) #ovb{background:linear-gradient(180deg,#6b4424,#4a2e18)!important;box-shadow:0 5px 0 #2a1a0c!important;border:3px solid #3e2a14!important;color:#fff7e6!important;text-shadow:0 2px 0 #2a1a0c!important}
+#kcard{background:linear-gradient(180deg,#c99a66,#8a5a2e 60%,#5a3a1c)!important;border:4px solid #4a2e18!important;box-shadow:0 6px 0 #2a1a0c!important;color:#fff3dc!important}
+#kcard .kc-mean{color:#fff3dc!important;text-shadow:0 2px 0 #3e2a14}
+#kcard .kc-read{color:#f3dcc0!important;text-shadow:0 1px 0 #3e2a14}
+#kcard .kc-meta{color:#ffe9b8!important;text-shadow:0 1px 0 #3e2a14}
+
+/* botão START com a mesma cor de madeira do botão Jogar */
+#cstart{background:linear-gradient(180deg,#b07a4a,#8a5a2e)!important;box-shadow:0 5px 0 #3e2a14!important;border:3px solid #6b4424!important;color:#fff7e6!important;text-shadow:0 2px 0 #3e2a14!important}
 </style>
 </head>
 <body class="menu">
@@ -630,22 +649,22 @@ body:not(.menu) .mv b{color:#ff2e88!important;font-size:var(--mvf,30px)!importan
 <div class="wrap">
   <div class="scorepill"><span id="sc">0</span></div>
   <div class="row2">
-    <div class="ob" id="ob" role="button" tabindex="0" title="View kanji card" aria-label="View goal kanji card"><big id="gk">日</big></div>
+    <div class="ob" id="ob" role="button" tabindex="0" title="Ver ficha do kanji" aria-label="Ver ficha do kanji objetivo"><big id="gk">日</big></div>
     <div id="tube"><div id="tfill"></div><div id="slots"></div></div>
     <div class="mv"><b id="mv">0</b></div>
   </div>
   <div class="jarwrap">
 <div id="board" class="loading" aria-label="Tabuleiro"><span class="fish"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12c2.5-4.5 6.5-6 10-4.5l2-3.5 1.5 1-1 3.5.5 1-.5 1 1 3.5-1.5 1-2-3.5C9 18 5 16.5 2.5 12z" fill="#ff8c1a"/><circle cx="7" cy="11" r="1.1" fill="#26305e"/></svg></span><span class="bub" style="left:22%;top:34%"></span><span class="bub s2" style="left:72%;top:58%"></span><div id="cells"></div><div id="floaters"></div></div>
-      <div id="toast">Drag to link 3 or more matching neighboring kanji</div>
+      <div id="toast">Arraste ligando 3 ou mais kanjis iguais vizinhos</div>
   </div>
   <div class="row4">
-    <button type="button" id="bm" aria-label="Music"></button>
-    <button type="button" id="bx" aria-label="Mix"><svg class="icb" viewBox="865.8 358.2 254.8 241.2" aria-hidden="true"><path fill="currentColor" d="M1013.43,527.96c1.58,4.43,3.32,9.17,5.22,14.23-5.69.32-11.39.63-17.08.95v-27.05h39.86v-69.99h-39.86v-18.98c14.23-.79,28.07-1.58,41.52-2.37l-5.69-25.15c-34.01,2.53-70.22,4.35-108.66,5.46,2.85,11.55,4.67,19.93,5.46,25.15,13.13-.47,25.94-.95,38.43-1.42v17.32h-40.81v83.51h22.54v-13.52h18.27v28c-17.56.32-35.59.4-54.09.24l5.69,28.23c30.21-2.21,64.13-4.67,101.78-7.35,1.58,5.22,3.24,10.75,4.98,16.61l23.72-7.59c-9.49-27.99-15.98-45.87-19.45-53.62l-21.83,7.35ZM1001.57,468.41h17.79v25.39h-17.79v-25.39ZM972.62,493.8h-18.27v-25.39h18.27v25.39ZM1093.62,507.56c-1.27,15.98-2.69,29.18-4.27,39.62-.63,3.32-1.58,5.06-2.85,5.22-1.42-.31-2.37-2.37-2.85-6.17-2.21-15.5-3.24-46.03-3.08-91.58v-89.2h-186.95v96.32c0,47.45-6.88,81.69-20.64,102.73,8.7,9.49,16.76,18.74,24.2,27.76,18.19-31.95,27.28-75.44,27.28-130.48v-69.28h125.27v71.65c0,42.23,1.74,71.96,5.22,89.2,4.59,23.41,13.76,35.11,27.52,35.11,12.34,0,20.48-7.99,24.44-23.96,2.53-12.02,4.67-27.84,6.41-47.45-8.38-3.48-14.95-6.64-19.69-9.49Z"/></svg></button>
-    <button type="button" id="bs" aria-label="Sound"></button>
+    <button type="button" id="bm" aria-label="Música"></button>
+    <button type="button" id="bx" aria-label="Misturar"><svg class="icb" viewBox="865.8 358.2 254.8 241.2" aria-hidden="true"><path fill="currentColor" d="M1013.43,527.96c1.58,4.43,3.32,9.17,5.22,14.23-5.69.32-11.39.63-17.08.95v-27.05h39.86v-69.99h-39.86v-18.98c14.23-.79,28.07-1.58,41.52-2.37l-5.69-25.15c-34.01,2.53-70.22,4.35-108.66,5.46,2.85,11.55,4.67,19.93,5.46,25.15,13.13-.47,25.94-.95,38.43-1.42v17.32h-40.81v83.51h22.54v-13.52h18.27v28c-17.56.32-35.59.4-54.09.24l5.69,28.23c30.21-2.21,64.13-4.67,101.78-7.35,1.58,5.22,3.24,10.75,4.98,16.61l23.72-7.59c-9.49-27.99-15.98-45.87-19.45-53.62l-21.83,7.35ZM1001.57,468.41h17.79v25.39h-17.79v-25.39ZM972.62,493.8h-18.27v-25.39h18.27v25.39ZM1093.62,507.56c-1.27,15.98-2.69,29.18-4.27,39.62-.63,3.32-1.58,5.06-2.85,5.22-1.42-.31-2.37-2.37-2.85-6.17-2.21-15.5-3.24-46.03-3.08-91.58v-89.2h-186.95v96.32c0,47.45-6.88,81.69-20.64,102.73,8.7,9.49,16.76,18.74,24.2,27.76,18.19-31.95,27.28-75.44,27.28-130.48v-69.28h125.27v71.65c0,42.23,1.74,71.96,5.22,89.2,4.59,23.41,13.76,35.11,27.52,35.11,12.34,0,20.48-7.99,24.44-23.96,2.53-12.02,4.67-27.84,6.41-47.45-8.38-3.48-14.95-6.64-19.69-9.49Z"/></svg></button>
+    <button type="button" id="bs" aria-label="Som"></button>
   </div>
   <div id="hudhide" hidden>
     <span id="lv">1</span><span id="hc">0</span><span id="xc">∞</span><span id="gd">—</span><b id="gn">0/0</b><b id="best">0</b><b id="mchain">0</b>
-    <button type="button" id="bh" aria-label="Hint"></button><button type="button" id="nb" aria-label="Restart level"></button><button type="button" id="bt"></button>
+    <button type="button" id="bh" aria-label="Dica"></button><button type="button" id="nb" aria-label="Reiniciar nível"></button><button type="button" id="bt"></button>
   </div>
   <p class="credit">© Titi e Mel 2025</p>
 </div>
@@ -663,10 +682,10 @@ body:not(.menu) .mv b{color:#ff2e88!important;font-size:var(--mvf,30px)!importan
   <div class="sheet-grid">
     <div><small>ON’YOMI</small><b id="son">—</b></div>
     <div><small>KUN’YOMI</small><b id="skun">—</b></div>
-    <div><small>STROKES</small><b id="sstr">—</b></div>
+    <div><small>TRAÇOS</small><b id="sstr">—</b></div>
     <div><small>LISTA</small><b id="sband">N5</b></div>
   </div>
-  <button type="button" class="sheet-btn" id="sclose">Close</button>
+  <button type="button" class="sheet-btn" id="sclose">Fechar</button>
 </div></div>
 
 <div id="cover">
@@ -677,17 +696,20 @@ body:not(.menu) .mv b{color:#ff2e88!important;font-size:var(--mvf,30px)!importan
 <p class="csub">漢字クラッシュ · N5</p>
 <button type="button" id="cstart"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5l12.5 7.5L7 19.5z" fill="currentColor"/></svg>START</button>
 <div class="snd"><button type="button" id="cbm"></button><button type="button" id="cbs"></button><button type="button" id="ct"></button></div>
-<p class="cnote">Learn the N5 kanji while playing</p>
+<p class="cnote">Aprenda os kanjis do N5 jogando</p>
 </div>
 <div id="map">
-<h2>Kanji Path</h2><p id="mapsub"></p>
+<h2>Caminho dos Kanjis</h2><p id="mapsub"></p>
 <div id="mapwrap"><div id="petals"></div><div id="mapscroll"><div id="mapbox"></div></div></div>
-<button type="button" id="mplay">Play <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5l12.5 7.5L7 19.5z" fill="currentColor"/></svg></button>
+<button type="button" id="mplay">Jogar <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5l12.5 7.5L7 19.5z" fill="currentColor"/></svg></button>
 </div>
 
 <script>
 /* N5 ordenados por traços — desbloqueio progressivo */
-const K=[["一", "イチ", "ひと(つ)", "one", 1], ["二", "ニ", "ふた(つ)", "two", 2], ["三", "サン", "みっ(つ)", "three", 3], ["四", "シ", "よっ(つ)", "four", 5], ["五", "ゴ", "いつ(つ)", "five", 4], ["六", "ロク", "むっ(つ)", "six", 4], ["七", "シチ", "なな(つ)", "seven", 2], ["八", "ハチ", "やっ(つ)", "eight", 2], ["九", "キュウ", "ここの(つ)", "nine", 2], ["十", "ジュウ", "とお", "ten", 2], ["万", "マン", "—", "ten thousand", 3], ["百", "ヒャク", "—", "hundred", 6], ["千", "セン", "—", "thousand", 3], ["円", "エン", "まる(い)", "circle; yen", 4], ["日", "ニチ、ジツ", "ひ", "day; sun", 4], ["月", "ゲツ、ガツ", "つき", "moon; month", 4], ["火", "カ", "ひ", "fire", 4], ["水", "スイ", "みず", "water", 4], ["木", "ボク、モク", "き", "tree", 4], ["金", "キン", "かね", "gold; money", 8], ["土", "ト、ド", "つち", "earth", 3], ["中", "チュウ", "なか", "middle; inside", 4], ["上", "ジョウ、ショウ", "うえ", "above", 3], ["下", "カ、ゲ", "した", "below", 3], ["左", "サ、シャ", "ひだり", "left", 5], ["右", "ウ、ユウ", "みぎ", "right", 5], ["大", "タイ、ダイ", "おお(きい)", "big", 3], ["小", "ショウ", "ちい(さい)", "small", 3], ["少", "ショウ", "すく(ない)", "little", 4], ["多", "タ", "おお(い)", "very; much", 6], ["人", "ジン、ニン", "ひと", "person", 2], ["女", "ジョ", "おんな", "woman", 3], ["男", "ダン", "おとこ", "man", 7], ["子", "シ、ス", "こ", "child", 3], ["父", "フ", "ちち", "father", 4], ["母", "ボ", "はは", "mother", 5], ["友", "ユウ", "とも", "friend", 4], ["名", "ミョウ、メイ", "な", "name", 6], ["先", "セン", "さき", "before; ahead", 6], ["前", "ゼン", "まえ", "front; before", 9], ["後", "コウ、ゴ", "あと、うし(ろ)", "after; behind", 9], ["外", "ガイ", "そと", "outside", 5], ["出", "シュツ", "で(る)", "leave", 5], ["入", "ニュウ", "い(る)、はい(る)", "enter", 2], ["口", "ク、コウ", "くち", "mouth", 3], ["目", "モク", "め", "eye", 5], ["耳", "ジ", "みみ", "ear", 6], ["手", "シュ、ズ", "て", "hand", 4], ["足", "ソク", "あし", "foot; leg", 7], ["見", "ケン", "み(る)", "see", 7], ["言", "ゲン、ゴン", "い(う)", "say", 7], ["聞", "ブン", "き(く)", "hear; ask", 14], ["話", "ワ", "はな(す)、はなし", "speak; talk", 13], ["語", "ゴ", "かた(る)", "tongue; language", 14], ["読", "ドク", "よ(む)", "read", 14], ["書", "ショ", "か(く)", "write", 10], ["来", "ライ", "く(る)", "come", 7], ["行", "コウ、ギョウ", "い(く)", "go", 6], ["会", "カイ", "あ(う)", "meet; gathering", 6], ["食", "ショク", "た(べる)", "eat", 9], ["飲", "イン", "の(む)", "drink", 12], ["買", "バイ", "か(う)", "buy", 12], ["何", "カ", "なに、なん", "what", 7], ["今", "コン", "いま", "now", 4], ["分", "フン、ブン", "わ(かる)", "minute; understand", 4], ["半", "ハン", "なか(ば)", "half", 5], ["時", "ジ", "とき", "hour; time", 10], ["週", "シュウ", "—", "week", 11], ["毎", "マイ", "—", "each; every", 6], ["年", "ネン", "とし", "year", 6], ["休", "キュウ", "やす(む)", "rest", 6], ["生", "ショウ、セイ", "う(まれる)、い(きる)", "be born; life", 5], ["気", "キ、ケ", "—", "spirit; air", 6], ["天", "テン", "あめ、あま", "sky", 4], ["空", "クウ", "そら、あ(く)", "sky; empty", 8], ["雨", "ウ", "あめ", "rain", 8], ["花", "カ", "はな", "flower", 7], ["山", "サン", "やま", "mountain", 3], ["川", "セン", "かわ", "river", 3], ["車", "シャ", "くるま", "car", 7], ["電", "デン", "—", "electricity", 13], ["駅", "エキ", "—", "station", 14], ["道", "トウ、ドウ", "みち", "path", 12], ["店", "テン", "みせ", "shop", 8], ["校", "コウ", "—", "school", 10], ["学", "ガク", "まな(ぶ)", "study", 8], ["社", "シャ", "やしろ", "company; shrine", 7], ["国", "コク", "くに", "country", 8], ["東", "トウ", "ひがし", "east", 8], ["西", "サイ、セイ", "にし", "west", 6], ["南", "ナン", "みなみ", "south", 9], ["北", "ホク", "きた", "north", 5], ["立", "リツ", "た(つ)", "raise", 5], ["高", "コウ", "たか(い)", "tall; expensive", 10], ["長", "チョウ", "なが(い)", "long; leader", 8], ["古", "コ", "ふる(い)", "old; ancient", 5], ["新", "シン", "あたら(しい)", "new", 13], ["安", "アン", "やす(い)", "cheap; calm", 6], ["白", "ハク", "しろ(い)", "white", 5], ["本", "ホン", "もと", "book; origin", 5], ["魚", "ギョ", "さかな", "fish", 11], ["間", "カン、ケン", "あいだ、ま", "interval; space", 12], ["午", "ゴ", "—", "noon", 4]];
+const K=[
+["一","イチ","ひと(つ)","um",1],["二","ニ","ふた(つ)","dois",2],["三","サン","みっ(つ)","três",3],["四","シ","よっ(つ)","quatro",5],["五","ゴ","いつ(つ)","cinco",4],["六","ロク","むっ(つ)","seis",4],["七","シチ","なな(つ)","sete",2],["八","ハチ","やっ(つ)","oito",2],["九","キュウ","ここの(つ)","nove",2],["十","ジュウ","とお","dez",2],
+["万","マン","—","dez mil",3],["百","ヒャク","—","cem",6],["千","セン","—","mil",3],["円","エン","まる(い)","círculo; iene",4],["日","ニチ、ジツ","ひ","dia; sol",4],["月","ゲツ、ガツ","つき","lua; mês",4],["火","カ","ひ","fogo",4],["水","スイ","みず","água",4],["木","ボク、モク","き","árvore",4],["金","キン","かね","ouro; dinheiro",8],["土","ト、ド","つち","terra",3],["中","チュウ","なか","meio; dentro",4],["上","ジョウ、ショウ","うえ","acima",3],["下","カ、ゲ","した","abaixo",3],["左","サ、シャ","ひだり","esquerda",5],["右","ウ、ユウ","みぎ","direita",5],["大","タイ、ダイ","おお(きい)","grande",3],["小","ショウ","ちい(さい)","pequeno",3],["少","ショウ","すく(ない)","pouco",4],["多","タ","おお(い)","muito",6],["人","ジン、ニン","ひと","pessoa",2],["女","ジョ","おんな","mulher",3],["男","ダン","おとこ","homem",7],["子","シ、ス","こ","criança",3],["父","フ","ちち","pai",4],["母","ボ","はは","mãe",5],["友","ユウ","とも","amigo",4],["名","ミョウ、メイ","な","nome",6],["先","セン","さき","antes; à frente",6],["前","ゼン","まえ","frente; antes",9],["後","コウ、ゴ","あと、うし(ろ)","depois; atrás",9],["外","ガイ","そと","fora",5],["出","シュツ","で(る)","sair",5],["入","ニュウ","い(る)、はい(る)","entrar",2],["口","ク、コウ","くち","boca",3],["目","モク","め","olho",5],["耳","ジ","みみ","orelha",6],["手","シュ、ズ","て","mão",4],["足","ソク","あし","pé; perna",7],["見","ケン","み(る)","ver",7],["言","ゲン、ゴン","い(う)","dizer",7],["聞","ブン","き(く)","ouvir; perguntar",14],["話","ワ","はな(す)、はなし","falar; conversa",13],["語","ゴ","かた(る)","língua; idioma",14],["読","ドク","よ(む)","ler",14],["書","ショ","か(く)","escrever",10],["来","ライ","く(る)","vir",7],["行","コウ、ギョウ","い(く)","ir",6],["会","カイ","あ(う)","encontrar; reunião",6],["食","ショク","た(べる)","comer",9],["飲","イン","の(む)","beber",12],["買","バイ","か(う)","comprar",12],["何","カ","なに、なん","o quê",7],["今","コン","いま","agora",4],["分","フン、ブン","わ(かる)","minuto; entender",4],["半","ハン","なか(ば)","metade",5],["時","ジ","とき","hora; tempo",10],["週","シュウ","—","semana",11],["毎","マイ","—","cada; todo",6],["年","ネン","とし","ano",6],["休","キュウ","やす(む)","descansar",6],["生","ショウ、セイ","う(まれる)、い(きる)","nascer; vida",5],["気","キ、ケ","—","espírito; ar",6],["天","テン","あめ、あま","céu",4],["空","クウ","そら、あ(く)","céu; vazio",8],["雨","ウ","あめ","chuva",8],["花","カ","はな","flor",7],["山","サン","やま","montanha",3],["川","セン","かわ","rio",3],["車","シャ","くるま","carro",7],["電","デン","—","eletricidade",13],["駅","エキ","—","estação",14],["道","トウ、ドウ","みち","caminho",12],["店","テン","みせ","loja",8],["校","コウ","—","escola",10],["学","ガク","まな(ぶ)","estudar",8],["社","シャ","やしろ","empresa; santuário",7],["国","コク","くに","país",8],["東","トウ","ひがし","leste",8],["西","サイ、セイ","にし","oeste",6],["南","ナン","みなみ","sul",9],["北","ホク","きた","norte",5],["立","リツ","た(つ)","levantar",5],["高","コウ","たか(い)","alto; caro",10],["長","チョウ","なが(い)","longo; líder",8],["古","コ","ふる(い)","velho; antigo",5],["新","シン","あたら(しい)","novo",13],["安","アン","やす(い)","barato; tranquilo",6],["白","ハク","しろ(い)","branco",5],["本","ホン","もと","livro; origem",5],["魚","ギョ","さかな","peixe",11],["間","カン、ケン","あいだ、ま","intervalo; espaço",12],["午","ゴ","—","meio-dia",4]
+];
 K.sort((a,b)=>a[4]-b[4]);
 
 const PAL=[["#3fa9f5",0],["#f0679e",1],["#ff8a1f",2],["#ffcc1f",3],["#4cd070",4],["#a56ae6",5]];
@@ -713,7 +735,7 @@ let pcs=[];const T=()=>pcs;
 /* ---------- SAVE ---------- */
 function loadSave(){
   try{
-    const s=JSON.parse(localStorage.getItem("kc_en_n5_v1")||"{}");
+    const s=JSON.parse(localStorage.getItem("kc_n5_v3")||"{}");
     if(s.level>0) level=s.level|0;
     if(s.best>0) bestScore=s.best|0;
     if(s.theme) theme=s.theme;
@@ -724,7 +746,7 @@ function loadSave(){
 }
 function save(){
   try{
-    localStorage.setItem("kc_en_n5_v1", JSON.stringify({level,best:bestScore,theme,lv:lvScores,m:musicOn?1:0,s:sfxOn?1:0}));
+    localStorage.setItem("kc_n5_v3", JSON.stringify({level,best:bestScore,theme,lv:lvScores,m:musicOn?1:0,s:sfxOn?1:0}));
   }catch(e){}
 }
 function applyTheme(){
@@ -772,7 +794,7 @@ function makeUrgent(L){
   const bpm=150+((r()*12)|0);
   const mel=[];let d=2;
   for(let i=0;i<32;i++){if(r()<.12){mel.push(-1);continue}d=Math.max(0,Math.min(9,d+((r()*5)|0)-2));mel.push(d)}
-  return{name:"Urgency",scale,prog,base,bpm,mel,wave:"sawtooth",bass:"triangle",sparkle:9}
+  return{name:"Urgência",scale,prog,base,bpm,mel,wave:"sawtooth",bass:"triangle",sparkle:9}
 }
 function urgentTheme(){if(!uTh||uThL!==level){uTh=makeUrgent(level);uThL=level}return uTh}
 function sched(){
@@ -1015,7 +1037,7 @@ const nr=(Math.random()*3)|0;
 for(let tr=0;rocks.length<nr&&tr<30;tr++){const r=.07+Math.random()*.05,x=.25+Math.random()*.5,y=Hn*(.5+Math.random()*.3);
 if(rocks.every(o=>Math.hypot(o.x-x,o.y-y)>o.r+r+.3)){const el=document.createElement("div"),d=2*r*Wpx;el.className="rock";
 el.style.cssText="width:"+d+"px;height:"+d+"px;transform:translate("+(x*Wpx-d/2)+"px,"+(y*Wpx-d/2)+"px)";cells.appendChild(el);rocks.push({x,y,r})}}
-shape=rocks.length?"Arena with "+rocks.length+" obstacle"+(rocks.length>1?"s":""):"Free arena";
+shape=rocks.length?"Arena com "+rocks.length+" obstáculo"+(rocks.length>1?"s":""):"Arena livre";
 for(let i=0;i<40-rocks.length*3;i++)mk(rnd(),R+Math.random()*(1-2*R),-R-Math.random()*Hn*1.6);
 markGoals();board.classList.remove("loading");last=performance.now();raf=requestAnimationFrame(loop)}
 new ResizeObserver(()=>{Wpx=cells.clientWidth||Wpx;Hn=(cells.clientHeight||Wpx)/Wpx;RC=(parseFloat(getComputedStyle(cells).borderTopLeftRadius)||0)/Wpx;pcs.forEach(sz)}).observe(cells);
@@ -1024,11 +1046,11 @@ function findChain(){const ok=t=>t.y>=R*.5;
 for(const a of pcs)if(ok(a))for(const b of pcs)if(ok(b)&&near(a,b))for(const c of pcs)if(ok(c)&&c!==a&&near(b,c))return[a,b,c];return null}
 function kick(){pcs.forEach(t=>{t.vy=-(.01+Math.random()*.006);t.vx=(Math.random()-.5)*.012;t.w=0})}
 setInterval(()=>{if(ended||!pcs.length||chain.length)return;if(pcs.some(t=>t.vx||t.vy||t.y<R))return;
-if(!findChain()){$("toast").textContent="No links — mixing…";kick()}},3000);
+if(!findChain()){$("toast").textContent="Sem ligações — misturando…";kick()}},3000);
 function markGoals(){pcs.forEach(t=>t.el.classList.toggle("goal",t.v===goal.i))}
 function floatScore(pts,x,y){const f=document.createElement("div");f.className="floater";f.textContent="+"+pts;
 f.style.left=(x*Wpx)+"px";f.style.top=((y-R)*Wpx)+"px";floaters.appendChild(f);setTimeout(()=>f.remove(),900)}
-function tube(){const p=cols[goal.i%cols.length]||["#fff",0],sl=$("slots"),rad="30%";$("ob").style.setProperty("--gc",p[0]);$("sc").style.setProperty("--gc",p[0]);document.documentElement.style.setProperty("--gc",p[0]);$("ob").style.setProperty("--gt",p[1]===3?"#3a2a00":"#fff");
+function tube(){const p=cols[goal.i%cols.length]||["#fff",0],sl=$("slots"),rad="30%";$("ob").style.setProperty("--gc",p[0]);$("sc").style.setProperty("--gc",p[0]);document.documentElement.style.setProperty("--gc",p[0]);$("ob").style.setProperty("--gt",p[1]===3?"#3a2a00":"#fff");document.documentElement.style.setProperty("--gt",p[1]===3?"#3a2a00":"#fff");
 $("tube").style.setProperty("--c",p[0]);
 if(sl.children.length!==goal.n||goal.got===0||sl.dataset.c!==p[0]){sl.innerHTML="";sl.dataset.c=p[0];for(let i=0;i<goal.n;i++){const e=document.createElement("i");e.style.borderRadius=rad;sl.appendChild(e)}}
 const got=Math.min(goal.got,goal.n);[...sl.children].forEach((e,i)=>e.classList.toggle("on",i<got));
@@ -1039,7 +1061,7 @@ $("hc").textContent=hintsLeft;$("xc").textContent="∞";
 $("bh").disabled=ended||hintsLeft<=0;$("bx").disabled=ended;$("best").textContent=bestScore;markGoals();tube()}
 /* ---------- FICHA ---------- */
 function openSheet(k){$("sk").textContent=k[0];$("smean").textContent=k[3];$("son").textContent=k[1]||"—";
-$("skun").textContent=(k[2]&&k[2]!=="—")?k[2]:"—";$("sstr").textContent=k[4]+" strokes";$("sband").textContent="N5 (game)";$("sheet").style.display="flex"}
+$("skun").textContent=(k[2]&&k[2]!=="—")?k[2]:"—";$("sstr").textContent=k[4]+" traços";$("sband").textContent="N5 (jogo)";$("sheet").style.display="flex"}
 function closeSheet(){$("sheet").style.display="none"}
 $("sclose").onclick=closeSheet;
 $("sheet").addEventListener("click",e=>{if(e.target===$("sheet"))closeSheet()});
@@ -1055,9 +1077,9 @@ $("toast").innerHTML=ICO.music+" "+curTheme().name+" · "+shape+" · novos: "+(n
 function end(t,bt,fn,detail){$("ovt").innerHTML=t;$("ovd").innerHTML=detail||"";$("ovb").textContent=bt;$("ovb").onclick=fn;$("ov").style.display="flex"}
 function finish(){
 if(goal.got>=goal.n){ended=true;sfx("win");const stars=moves>=10?3:moves>=5?2:1,done=unlocked(level)>=K.length,nb=recLevel(true,stars);
-end(done?"N5 list complete! "+ICO.trophy:("Level "+level+" complete! "+ICO.star.repeat(stars)),done?"Play again":("Next · Lvl "+(level+1)),
-()=>{const fr=level;if(done)level=1;else level++;save();$("ov").style.display="none";showMap(fr,level)},set[goal.i][0]+" · points "+score+" · mov. "+moves+" · overall record "+bestScore+(nb?" · new record for this level! "+ICO.star:" · best for this level "+lvScores[level].s))}
-else if(moves<=0){ended=true;recLevel(false,0);sfx("lose");end("","Game over",()=>{$("ov").style.display="none";$("ov").classList.remove("loss");showCover()},"");$("ov").classList.add("loss")}}
+setTimeout(()=>end(done?"Lista N5 completa! "+ICO.trophy:("Nível "+level+" completo! "+ICO.star.repeat(stars)),done?"Jogar de novo":("Próximo · Nív. "+(level+1)),
+()=>{const fr=level;if(done)level=1;else level++;save();$("ov").style.display="none";showMap(fr,level)},set[goal.i][0]+" · pontos "+score+" · mov. "+moves+" · recorde geral "+bestScore+(nb?" · novo recorde da fase! "+ICO.star:" · melhor da fase "+lvScores[level].s)),3000)}
+else if(moves<=0){ended=true;recLevel(false,0);sfx("lose");end("","Fim de jogo",()=>{$("ov").style.display="none";$("ov").classList.remove("loss");showCover()},"");$("ov").classList.add("loss")}}
 /* ---------- CORRENTE ---------- */
 function addTo(t){const l=chain[chain.length-1];
 if(!chain.length){chain=[t];t.el.classList.add("sel");pebble(0.5,true);return}
@@ -1074,7 +1096,7 @@ sfx("boom");pixelBurst(b.x,b.y);
 board.animate([{transform:"translate(0,0)"},{transform:"translate(-4px,3px)"},{transform:"translate(4px,-3px)"},{transform:"translate(-3px,-2px)"},{transform:"translate(0,0)"}],{duration:320});
 [b,...hp].forEach(t=>{if(t.v===goal.i)goal.got++;t.el.classList.add("clr");pcs.splice(pcs.indexOf(t),1);setTimeout(()=>t.el.remove(),280)});
 const pts=hp.length*15;score+=pts;checkBurst();floatScore(pts,b.x,b.y);
-$("toast").innerHTML=ICO.boom+" Bomb! "+hp.length+" pieces exploded (+"+pts+")"+(near?" · double explosion!":"");
+$("toast").innerHTML=ICO.boom+" Bomba! "+hp.length+" doces explodidos (+"+pts+")"+(near?" · explosão dupla!":"");
 if(score>bestScore){bestScore=score;save()}
 for(let i=0;i<hp.length+1;i++)mk(rnd(),R+Math.random()*(1-2*R),-R-i*.1-Math.random()*.1);
 hud();finish()}
@@ -1104,7 +1126,7 @@ function kcShow(v,n,pts){if(Date.now()<lightningUntil){setTimeout(()=>kcShow(v,n
   el.innerHTML='<div class="kc-piece" style="--c:'+p[0]+';border-radius:'+KSHAPE[p[1]]+';color:'+(p[1]===3?'#3a2a00':'#fff')+'">'+k[0]+'</div>'
     +'<div class="kc-mean">'+k[3]+'</div>'
     +'<div class="kc-read">'+k[1]+(k[2]&&k[2]!=="—"?' · '+k[2]:'')+'</div>'
-    +'<div class="kc-meta">'+n+' pieces · +'+pts+'</div>';
+    +'<div class="kc-meta">'+n+' peças · +'+pts+'</div>';
   el.getAnimations().forEach(a=>a.cancel());
   const tr=$("sc").getBoundingClientRect(),cx=innerWidth/2,cy=innerHeight*.44,dx=(tr.left+tr.width/2)-cx,dy=(tr.top+tr.height/2)-cy;
   const C="translate(-50%,-50%)",F="translate(calc(-50% + "+dx.toFixed(1)+"px),calc(-50% + "+dy.toFixed(1)+"px))";
@@ -1120,7 +1142,7 @@ function kcShow(v,n,pts){if(Date.now()<lightningUntil){setTimeout(()=>kcShow(v,n
   setTimeout(scoreArrive,2340);
 }
 function release(){const c=chain;chain=[];$("pl").setAttribute("points","");c.forEach(t=>t.el.classList.remove("sel"));
-if(c.length<3){if(c.length>1){sfx("bad");$("toast").textContent="Link 3 or more matching neighbors."}return}
+if(c.length<3){if(c.length>1){sfx("bad");$("toast").textContent="Ligue 3 ou mais iguais vizinhos."}return}
 const n=c.length,pts=(n*10+(n-3)*10)*(feverOn?2:1);sfx("pop",Math.min(n-2,7));
 c.forEach(t=>{if(t.v===goal.i)goal.got++;t.el.classList.add("clr");pcs.splice(pcs.indexOf(t),1);setTimeout(()=>t.el.remove(),280)});
 const l=c[n-1],k=set[c[0].v];score+=pts;checkBurst();floatScore(pts,l.x,l.y);
@@ -1130,7 +1152,7 @@ for(let i=0;i<(n>5?n-1:n);i++)mk(rnd(),R+Math.random()*(1-2*R),-R-i*.1-Math.rand
 if(n>5)mk(-1,l.x,l.y);
 hud();finish()}
 $("bh").onclick=()=>{if(ended||hintsLeft<=0)return;const c=findChain();if(!c)return;hintsLeft--;hud();
-c.forEach(t=>t.el.classList.add("hint"));$("toast").textContent="Hint: link the glowing ones! ("+hintsLeft+" rest.)";
+c.forEach(t=>t.el.classList.add("hint"));$("toast").textContent="Dica: ligue as que brilham! ("+hintsLeft+" rest.)";
 setTimeout(()=>c.forEach(t=>t.el.classList.remove("hint")),1800)};
 $("bx").onclick=()=>{if(ended)return;swirl();hud();$("toast").textContent="Misturado!"};
 $("nb").onclick=()=>newGame();
@@ -1180,7 +1202,7 @@ function showMap(from,to){urgentMode=false;
   const setWave=k=>{box.querySelectorAll(".kt.wave").forEach(b=>b.classList.remove("wave"));
     const f=box.querySelector('.fl[data-k="'+k+'"]');
     if(f)f.querySelectorAll(".kt").forEach((b,i)=>{b.style.setProperty("--d",(i*0.12).toFixed(2)+"s");b.classList.add("wave")})};
-  const info=k=>{$("mapsub").textContent="New: "+lvK(k).map(x=>x[0]).join(" ");$("mplay").innerHTML="Play "+ICO.play};
+  const info=k=>{$("mapsub").textContent="Novos: "+lvK(k).map(x=>x[0]).join(" ");$("mplay").innerHTML="Jogar "+ICO.play};
   const pt=$("petals");makePetals(pt,26);
   if(!pt.childElementCount){for(let i=0;i<28;i++){const e=document.createElement("i");e.className="pet";
     e.style.left=(Math.random()*100).toFixed(1)+"%";e.style.setProperty("--sx",((Math.random()-.5)*90).toFixed(0)+"px");
@@ -1198,10 +1220,10 @@ function showMap(from,to){urgentMode=false;
 $("mplay").onclick=()=>{const go=()=>{$("map").style.display="none";document.body.classList.remove("menu");newGame()};
   go()};
 $("cstart").onclick=()=>showMap(level,level);
-let flipped={};try{flipped=JSON.parse(localStorage.getItem("kc_en_n5_fl")||"{}")||{}}catch(e){}
+let flipped={};try{flipped=JSON.parse(localStorage.getItem("kc_n5_fl")||"{}")||{}}catch(e){}
 const isRev=k=>isDone(k)||!!flipped[k];
 function flipFloor(k,done){const f=document.querySelector('#mapbox .fl[data-k="'+k+'"]');flipped[k]=true;
-  try{localStorage.setItem("kc_en_n5_fl",JSON.stringify(flipped))}catch(e){}
+  try{localStorage.setItem("kc_n5_fl",JSON.stringify(flipped))}catch(e){}
   if(!f){done();return}
   const bs=[...f.querySelectorAll(".kt")];
   bs.forEach((b,i)=>{b.classList.add("anim");setTimeout(()=>b.classList.add("open"),60+i*110)});
